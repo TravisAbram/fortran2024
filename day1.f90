@@ -43,6 +43,7 @@ program main
         read(unit_number, '(A)', iostat=io_status) line
         if (io_status < 0) exit
         ! Hard-coded to input size/pattern of 5 int, 3 buffer, 5 int
+        ! These reads are used to turn characters into integers
         read(line(1:5), '(I5)', iostat=io_status) left(i)
         read(line(9:13), '(I5)', iostat=io_status) right(i)
     end do
