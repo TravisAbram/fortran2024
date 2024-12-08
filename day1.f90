@@ -5,10 +5,10 @@ program main
     integer :: unit_number = 10
     integer, allocatable :: left(:), right(:)
     character(len=13) :: line
-    
+ 
     ! Open the file
     open(unit=unit_number, file='input/day1', status='old', action='read', iostat=io_status)
-    
+
     ! Check for successful open
     if (io_status /=0) then
         print *, "Error opening the file!"
@@ -22,7 +22,7 @@ program main
         if (io_status < 0) exit
         line_count = line_count + 1
     end do
-    
+
     ! Rewind file to beginning
     rewind(unit_number)
 
@@ -37,7 +37,7 @@ program main
         print *, "Error allocating memory"
         stop
     end if
-    
+
     ! Populate arrays
     do i = 1, line_count
         read(unit_number, '(A)', iostat=io_status) line
@@ -47,11 +47,11 @@ program main
         read(line(1:5), '(I5)', iostat=io_status) left(i)
         read(line(9:13), '(I5)', iostat=io_status) right(i)
     end do
-    
+
     ! Sort arrays
     call sort(left)
     call sort(right)
-    
+
     ! Part 1
     do i = 1, line_count
         difference = left(i) - right(i)
@@ -61,7 +61,7 @@ program main
         part1 = part1 + difference
     end do
     print *, "Part 1:", part1
-    
+
     ! Part 2
     do i = 1, line_count
         do j = 1, line_count-1
