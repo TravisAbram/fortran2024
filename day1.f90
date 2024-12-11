@@ -5,7 +5,7 @@ program main
     integer :: unit_number = 10
     integer, allocatable :: left(:), right(:)
     character(len=13) :: line
- 
+
     ! Open the file
     open(unit=unit_number, file='input/day1', status='old', action='read', iostat=io_status)
 
